@@ -1,0 +1,64 @@
+:root {
+  --bg: #f4f6fa; --grid: #e4e9f1; --surface: #fff; --ink: #0f172a; --muted: #5a6578; --line: #d3d9e4;
+  --cell: #dde3ec; --done: #0e7c6b; --on-done: #fff; --danger: #b42318; --radius: 6px;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0e1320; --grid: #172036; --surface: #151c2e; --ink: #e8ecf4; --muted: #9aa6bb; --line: #27324b;
+    --cell: #26304a; --done: #2dd4bf; --on-done: #06241f; --danger: #ff8a7a; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; font: 16px/1.5 var(--sans); color: var(--ink); background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 24px 24px; }
+#app { max-width: 44rem; margin: 0 auto; padding: 2rem 1rem 3rem; }
+h1, h2 { font-family: var(--serif); font-weight: 700; margin: 0; }
+h1 { font-size: 2.25rem; letter-spacing: -0.01em; }
+.muted { color: var(--muted); margin: 0.15rem 0 0; }
+.top { margin-bottom: 1.5rem; }
+
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 0.5rem 0.9rem; }
+button:hover { border-color: var(--muted); }
+:focus-visible { outline: 2px solid var(--done); outline-offset: 2px; }
+.link { border: 0; background: none; padding: 0; text-decoration: underline; color: var(--muted); }
+
+.add { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.add label { flex-basis: 100%; font-weight: 600; }
+.add input { flex: 1 1 12rem; min-width: 0; padding: 0.55rem 0.7rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.add button { background: var(--done); color: var(--on-done); border-color: var(--done); font-weight: 600; }
+.error { color: var(--danger); margin: 0.5rem 0 0; }
+
+.habits { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
+.habit { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem; }
+.head { display: flex; align-items: center; gap: 0.9rem; }
+.check { flex: none; width: 2.75rem; height: 2.75rem; padding: 0; border-radius: 50%; border: 2px solid var(--muted); font-size: 1.3rem; line-height: 1; color: transparent; }
+.check[aria-pressed="true"] { background: var(--done); border-color: var(--done); color: var(--on-done); }
+.name { flex: 1; min-width: 0; font-weight: 600; overflow-wrap: anywhere; }
+.streak { text-align: right; line-height: 1; }
+.streak b { display: block; font: 700 2.25rem var(--serif); font-variant-numeric: tabular-nums; }
+.streak span { font-size: 0.8rem; color: var(--muted); }
+.stats { margin: 0.6rem 0 0.7rem; font-size: 0.875rem; color: var(--muted); }
+
+.map { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 1fr); gap: 3px; overflow-x: auto; padding-bottom: 2px; }
+.map > * { width: 14px; height: 14px; border-radius: 3px; background: var(--cell); border: 0; padding: 0; }
+.map .on { background: var(--done); }
+.map .future { background: none; border: 1px dashed var(--line); }
+.map .today { outline: 2px solid var(--ink); outline-offset: 1px; }
+.map button:hover { outline: 2px solid var(--muted); }
+
+.acts { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.acts button { padding: 0.25rem 0.6rem; font-size: 0.85rem; color: var(--muted); }
+.acts .danger { color: var(--danger); border-color: var(--danger); }
+
+.empty { text-align: center; padding: 2rem 1rem; }
+.empty p { margin: 0 0 0.75rem; }
+.archived { margin-top: 1.5rem; } .archived summary { cursor: pointer; color: var(--muted); }
+.foot { margin-top: 2.5rem; }
+
+dialog { width: min(34rem, calc(100vw - 2rem)); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); padding: 1.25rem; }
+dialog::backdrop { background: rgb(0 0 0 / 0.45); }
+dialog textarea { width: 100%; margin-top: 0.75rem; padding: 0.6rem; font: 0.8rem/1.4 ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+dialog .row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+@media (prefers-reduced-motion: no-preference) { .check, .map > * { transition: background-color 0.15s, border-color 0.15s; } }

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streaks</title>
+  <meta name="description" content="Track daily habits and keep the chain going. Everything stays in your browser.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e7c6b'/%3E%3Cpath d='M8 17l5 5 11-12' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="top">
+      <h1>Streaks</h1>
+      <p id="today-label" class="muted"></p>
+    </header>
+
+    <form id="add-form" class="add" autocomplete="off">
+      <label for="new-habit">New habit</label>
+      <input id="new-habit" type="text" maxlength="40" placeholder="Read 20 pages">
+      <button type="submit">Add habit</button>
+    </form>
+    <p id="form-error" class="error" role="alert" hidden></p>
+
+    <ul id="habits" class="habits"></ul>
+
+    <details id="archived-box" class="archived" hidden>
+      <summary id="archived-title"></summary>
+      <ul id="archived" class="habits"></ul>
+    </details>
+
+    <footer class="foot">
+      <button id="backup-open" type="button" class="link">Backup and restore</button>
+      <p id="storage-note" class="muted" hidden>This browser is not saving your data. Use Backup and restore to keep a copy.</p>
+    </footer>
+  </main>
+
+  <dialog id="backup" aria-labelledby="backup-title">
+    <form method="dialog">
+      <h2 id="backup-title">Backup and restore</h2>
+      <p class="muted">Copy this text to keep a backup. To restore, paste a backup over it and choose Replace my habits.</p>
+      <textarea id="backup-text" rows="10" spellcheck="false" aria-label="Backup data"></textarea>
+      <p id="backup-msg" class="muted" role="status"></p>
+      <div class="row">
+        <button type="button" id="copy">Copy</button>
+        <button type="button" id="download">Download file</button>
+        <button type="button" id="restore">Replace my habits</button>
+        <button value="close">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript>Streaks needs JavaScript to run.</noscript>
+  <script src="src/js/streaks.js"></script>
+  <script src="src/js/app.js"></script>
+</body>
+</html>

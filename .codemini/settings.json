@@ -1,0 +1,15 @@
+{
+  "$schema": "codemini://schema/settings.json",
+  "tabSize": 2,
+  "insertSpaces": true,
+  "wordWrap": "on",
+  "renderWhitespace": "trailing",
+  "minimap": false,
+  "autoSave": "After Delay",
+  "autoSaveDelay": 1000,
+  "explorerDefaultView": "Tree View",
+  "showBreadcrumbs": true,
+  "accentColor": "#0e7c6b",
+  "statusBarBackground": "#0e7c6b",
+  "statusBarForeground": "#ffffff"
+}

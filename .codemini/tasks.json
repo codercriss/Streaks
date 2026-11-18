@@ -1,0 +1,20 @@
+{
+  "$schema": "codemini://schema/tasks.json",
+  "version": 1,
+  "tasks": [
+    {
+      "label": "Test",
+      "group": "test",
+      "default": true,
+      "command": "node src/js/streaks.js",
+      "detail": "Runs the self-tests built into the logic file. In Node, npm test does the same."
+    },
+    {
+      "label": "Time zone check",
+      "group": "custom",
+      "lang": "javascript",
+      "script": "const now = new Date();\nconst p2 = (n) => String(n).padStart(2, '0');\nconst offset = (month) => { const m = -new Date(2025, month, 1).getTimezoneOffset(); return (m < 0 ? '-' : '+') + p2(Math.floor(Math.abs(m) / 60)) + ':' + p2(Math.abs(m) % 60); };\nconsole.log('Time zone:  ' + Intl.DateTimeFormat().resolvedOptions().timeZone);\nconsole.log('UTC offset: ' + offset(0) + ' in January, ' + offset(6) + ' in July');\nconsole.log('Local day:  ' + now.getFullYear() + '-' + p2(now.getMonth() + 1) + '-' + p2(now.getDate()));\nconsole.log('UTC day:    ' + now.toISOString().slice(0, 10));",
+      "detail": "Streaks counts days in your local time zone. Shows what this runner sees; paste it into a bug report."
+    }
+  ]
+}

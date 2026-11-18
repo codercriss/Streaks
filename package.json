@@ -1,0 +1,13 @@
+{
+  "name": "streaks",
+  "version": "1.0.0",
+  "description": "A habit tracker that runs in the browser. No dependencies, no build step.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node src/js/streaks.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
